@@ -23,13 +23,18 @@ export default function Preloader() {
 
   // Prevent scrolling behind the curtain (belt-and-suspenders alongside
   // Lenis being stopped — this also blocks native touch scroll on mobile).
+  // Depends on isMounted (rather than running once on mount) because this
+  // component hides itself via `return null` instead of being unmounted by
+  // its parent — a plain `useEffect(..., [])` cleanup would never fire, and
+  // the scroll lock would stay applied forever after the curtain finishes.
   useEffect(() => {
+    if (!isMounted) return;
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = original;
     };
-  }, []);
+  }, [isMounted]);
 
   useGSAP(
     () => {
