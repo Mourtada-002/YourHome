@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+@import "./fonts.css";
+
+:root {
+  --font-clash-display: "Clash Display", serif;
+  --font-general-sans: "General Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis takes over smooth scrolling */
+}
+
+body {
+  background: #0b0a08;
+  color: #f4eee2;
+  font-family: var(--font-general-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #c6a15b;
+  color: #0b0a08;
+}
+
+/* Slim premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0a08;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a352b;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c6a15b;
+}
+
+/* Utility: clip-path reveal targets (animated via GSAP clipPath tween) */
+.clip-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* Zentry-style nav hover button: label swaps on a vertical flip */
+.nav-hover-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  font-family: var(--font-general-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f4eee2;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+.nav-hover-btn:hover,
+.nav-hover-btn.is-active {
+  color: #c6a15b;
+}
+
+.nav-hover-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: #c6a15b;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.nav-hover-btn:hover::after,
+.nav-hover-btn.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Masked / blend title reveal */
+.mask-text {
+  mix-blend-mode: difference;
+}
+
+/* Hide scrollbar for horizontal gallery track while keeping it scrollable-by-JS */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Preloader curtain panels */
+.curtain-panel {
+  background: #0b0a08;
+}
+
+/* Navbar solid state once scrolled past the hero threshold */
+.nav-scrolled {
+  background-color: rgba(11, 10, 8, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}

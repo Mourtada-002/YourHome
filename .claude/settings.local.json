@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --use-npm)",
+      "Bash(unzip -o -q clash.zip -d clash)",
+      "Bash(unzip -o -q general.zip -d general)"
+    ]
+  }
+}
