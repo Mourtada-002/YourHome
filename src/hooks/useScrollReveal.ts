@@ -5,7 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 
 interface UseScrollRevealOptions {
-  /** Selector (scoped to the returned container ref) for elements to stagger in. */
   targets?: string;
   y?: number;
   stagger?: number;
@@ -13,11 +12,6 @@ interface UseScrollRevealOptions {
   duration?: number;
 }
 
-/**
- * Generic fade + translateY reveal on scroll, with stagger across a grid of
- * children. Attach the returned ref to a section container and mark each
- * child that should animate with `data-reveal`.
- */
 export function useScrollReveal<T extends HTMLElement>(
   options: UseScrollRevealOptions = {}
 ): RefObject<T | null> {
@@ -48,7 +42,7 @@ export function useScrollReveal<T extends HTMLElement>(
         },
       });
     },
-    { scope: containerRef } // useGSAP auto-reverts everything created here on unmount
+    { scope: containerRef }
   );
 
   return containerRef;

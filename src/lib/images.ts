@@ -1,9 +1,3 @@
-/**
- * Central catalogue of placeholder visuals (Unsplash, free license).
- * Swap the `src` values for real property/team photos when available —
- * every component reads from here, so there is a single place to update.
- */
-
 export interface PlaceholderImage {
   src: string;
   alt: string;

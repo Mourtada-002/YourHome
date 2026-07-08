@@ -28,7 +28,6 @@ export default function Navbar() {
   const [activeHref, setActiveHref] = useState("");
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Logo/nav entrance, gated behind the preloader curtain finishing.
   useGSAP(
     () => {
       if (!isReady || !navRef.current) return;
@@ -43,7 +42,6 @@ export default function Navbar() {
     { dependencies: [isReady] }
   );
 
-  // Transparent-over-hero -> solid-on-scroll background swap.
   useGSAP(() => {
     const trigger = ScrollTrigger.create({
       start: "80px top",
@@ -53,12 +51,6 @@ export default function Navbar() {
     return () => trigger.kill();
   }, []);
 
-  // Scrollspy: highlights the nav link for whichever section currently
-  // spans the vertical centre of the viewport. Reads live bounding boxes on
-  // every scroll tick (rather than precomputed start/end offsets) because
-  // the pinned horizontal gallery section keeps its rect fixed on screen
-  // for the whole time it's active, which static ScrollTrigger offsets
-  // can't represent.
   useGSAP(() => {
     const sections = NAV_LINKS.map((link) => ({
       href: link.href,
@@ -83,9 +75,6 @@ export default function Navbar() {
     return () => trigger.kill();
   }, []);
 
-  // Mobile menu overlay: a single paused timeline (backdrop fade, then links
-  // and CTA staggering in) that plays forward on open and reverses on close,
-  // instead of the overlay just popping in/out with no transition.
   useGSAP(() => {
     if (!menuOverlayRef.current) return;
     const links = menuLinksRef.current.filter((el): el is HTMLAnchorElement => Boolean(el));
@@ -127,14 +116,10 @@ export default function Navbar() {
     { dependencies: [isMenuOpen] }
   );
 
-  // Force-close if the viewport grows past the mobile breakpoint while open
-  // (e.g. rotating a tablet), so the overlay can't get stuck open behind the
-  // desktop nav.
   useEffect(() => {
     if (!isMobile) setIsMenuOpen(false);
   }, [isMobile]);
 
-  // Block scroll behind the overlay while it's open, and let Escape close it.
   useEffect(() => {
     if (!isMenuOpen) return;
     const original = document.body.style.overflow;
@@ -205,14 +190,6 @@ export default function Navbar() {
       </button>
     </header>
 
-    {/* Rendered as a sibling of <header>, not a child: the header gets a
-        GSAP `y` entrance animation, which leaves an inline `transform` on
-        it. A `transform` on an ancestor turns it into the containing block
-        for `position: fixed` descendants, so a fixed overlay nested inside
-        would size itself to the header's own (thin) box instead of the
-        viewport. Always mounted (visibility/opacity are GSAP-driven) so
-        both the open and close transitions can animate — a
-        `{isMenuOpen && ...}` mount would just pop the panel in/out. */}
     <div
       ref={menuOverlayRef}
       className="invisible fixed inset-0 z-40 flex flex-col items-center justify-center gap-4 bg-ink/98 backdrop-blur-lg opacity-0 md:hidden"

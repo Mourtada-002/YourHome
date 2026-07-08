@@ -19,19 +19,6 @@ export default function HorizontalGallery() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Pin the section for the length of the horizontal track, then drive its
-  // x-translation with the vertical scrollbar (scrub: true) — vertical
-  // scroll becomes horizontal motion while the section stays pinned.
-  //
-  // Both the mobile (native overflow-x) and desktop (pinned track) markup
-  // are always in the DOM, toggled by CSS breakpoint (`md:`) — and the pin
-  // itself is scoped to the same breakpoint via gsap.matchMedia rather than
-  // a React `isMobile` state. Gating the pin on React state instead would
-  // mean the desktop track gets conditionally unmounted by React exactly
-  // when the breakpoint flips, which can yank the DOM out from under GSAP's
-  // pin before its cleanup runs and leave an orphaned pin-spacer — a tall
-  // empty (black) gap in the page on mobile. matchMedia's own listener
-  // reverts the pin cleanly on its own, independent of React's render cycle.
   useGSAP(() => {
     const track = trackRef.current;
     const section = sectionRef.current;

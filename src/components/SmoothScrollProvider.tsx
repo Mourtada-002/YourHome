@@ -10,10 +10,6 @@ interface SmoothScrollProviderProps {
   children: ReactNode;
 }
 
-/**
- * Boots Lenis once for the whole app and keeps it paused while the
- * Preloader curtain is still playing, so the user can't scroll behind it.
- */
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const lenisRef = useRef<Lenis | null>(null);
   const { isReady } = useSiteReady();

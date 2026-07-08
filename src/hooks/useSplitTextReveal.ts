@@ -10,17 +10,10 @@ interface UseSplitTextRevealOptions {
   type?: SplitType;
   stagger?: number;
   delay?: number;
-  /** "load" fires immediately (e.g. hero title), "scroll" waits for the element to enter view. */
   trigger?: "load" | "scroll";
-  /** Gate the load-triggered animation behind an external readiness flag (e.g. preloader done). */
   enabled?: boolean;
 }
 
-/**
- * Splits text into lines/words/chars (each masked in an overflow-hidden
- * wrapper) and animates them up from behind the mask — the Zentry-style
- * headline reveal. SplitText instance is reverted automatically by useGSAP.
- */
 export function useSplitTextReveal<T extends HTMLElement>(
   options: UseSplitTextRevealOptions = {}
 ): RefObject<T | null> {

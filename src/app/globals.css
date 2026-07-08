@@ -12,7 +12,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis takes over smooth scrolling */
+  scroll-behavior: auto;
 }
 
 body {
@@ -27,7 +27,6 @@ body {
   color: #0b0a08;
 }
 
-/* Slim premium scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -42,7 +41,6 @@ body {
   background: #c6a15b;
 }
 
-/* Utility: clip-path reveal targets (animated via GSAP clipPath tween) */
 .clip-reveal {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
@@ -51,7 +49,6 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
-/* Zentry-style nav hover button: label swaps on a vertical flip */
 .nav-hover-btn {
   position: relative;
   overflow: hidden;
@@ -89,12 +86,10 @@ body {
   transform-origin: left;
 }
 
-/* Masked / blend title reveal */
 .mask-text {
   mix-blend-mode: difference;
 }
 
-/* Hide scrollbar for horizontal gallery track while keeping it scrollable-by-JS */
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -103,12 +98,10 @@ body {
   display: none;
 }
 
-/* Preloader curtain panels */
 .curtain-panel {
   background: #0b0a08;
 }
 
-/* Navbar solid state once scrolled past the hero threshold */
 .nav-scrolled {
   background-color: rgba(11, 10, 8, 0.85);
   backdrop-filter: blur(12px);

@@ -21,7 +21,7 @@ export default function Contact() {
       className="grid gap-16 px-gutter py-section md:grid-cols-2"
     >
       <div
-        className="relative order-2 h-[50vh] min-h-[360px] overflow-hidden rounded-sm md:order-1"
+        className="relative order-2 h-[50vh] min-h-90 overflow-hidden rounded-sm md:order-1"
         data-reveal
       >
         <Image

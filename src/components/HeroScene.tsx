@@ -4,11 +4,6 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 
-/**
- * Lightweight R3F accent for the Hero: a single wireframe icosahedron,
- * gently floating/rotating. No HDR/environment maps or postprocessing —
- * kept intentionally cheap since it renders behind the fold on every load.
- */
 export default function HeroScene() {
   return (
     <Canvas

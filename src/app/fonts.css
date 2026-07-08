@@ -1,7 +1,3 @@
-/* Local @font-face declarations — self-hosted woff2, no external requests.
-   Clash Display (display/headings) & General Sans (body) — free for commercial
-   use via Fontshare (Indian Type Foundry). Licenses in /public/fonts/licenses. */
-
 @font-face {
   font-family: "Clash Display";
   src: url("/fonts/clash-display/ClashDisplay-Light.woff2") format("woff2");

@@ -8,10 +8,6 @@ interface ButtonProps {
   className?: string;
 }
 
-/**
- * Fill-on-hover CTA button. The sweep is a pure CSS transform (scaleX on a
- * pseudo layer via group-hover) — no JS needed for this micro-interaction.
- */
 export default function Button({
   href,
   children,

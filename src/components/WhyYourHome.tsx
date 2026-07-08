@@ -30,8 +30,6 @@ export default function WhyYourHome() {
   const sectionRef = useScrollReveal<HTMLElement>();
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // Geometric transition: a diagonal clip-path sweeps open once the image
-  // enters view, rather than a plain fade — the "curtain between blocks" cue.
   useGSAP(
     () => {
       if (!imageRef.current) return;

@@ -56,7 +56,6 @@ export default function Testimonials() {
 
       <div className="mb-16 flex flex-col gap-4" data-reveal>
         <p className="text-xs uppercase tracking-wide2 text-gold">Témoignages</p>
-        {/* mix-blend-mode masking: title cuts visually into the faded photo behind it */}
         <h2 className="mask-text max-w-3xl font-display text-4xl text-ivory md:text-6xl">
           Ils nous ont fait confiance
         </h2>

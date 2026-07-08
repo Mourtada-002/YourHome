@@ -27,7 +27,6 @@ export default function Hero() {
     enabled: isReady,
   });
 
-  // Subtitle + CTA fade in just after the title lines finish revealing.
   useGSAP(
     () => {
       if (!isReady) return;
@@ -43,9 +42,6 @@ export default function Hero() {
     { dependencies: [isReady] }
   );
 
-  // Background parallax: image drifts and scales slightly slower than
-  // scroll (scrub: true keeps it locked to the exact scroll position).
-  // Skipped on mobile to keep scroll performance light on that breakpoint.
   useGSAP(
     () => {
       if (isMobile || !imageWrapRef.current || !sectionRef.current) return;
@@ -82,7 +78,6 @@ export default function Hero() {
         <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-ink/10" />
       </div>
 
-      {/* Optional 3D accent (R3F): a floating wireframe icosahedron, desktop only */}
       {!isMobile && (
         <div className="pointer-events-none absolute right-[6vw] top-[16vh] hidden h-[38vh] w-[38vh] max-w-md md:block">
           <HeroScene />

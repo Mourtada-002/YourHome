@@ -41,9 +41,6 @@ export default function FeaturedProperties() {
   const isMobile = useIsMobile();
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-  // Scroll-zoom: each image starts scaled up and eases down to its natural
-  // size as the card crosses the viewport, scrubbed to the exact scroll
-  // position. Disabled on mobile where scroll perf matters more than flourish.
   useGSAP(
     () => {
       if (isMobile) return;

@@ -1,8 +1,5 @@
 import type { Config } from "tailwindcss";
 
-// Single source of truth for design tokens (colors, fonts, spacing, easing).
-// Loaded into Tailwind v4 via the `@config` directive in src/app/globals.css,
-// so every token below is available as a utility class (bg-ink, text-gold, font-display, etc.)
 export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#0b0a08", // deep near-black background
-        charcoal: "#16140f", // secondary dark surface
-        surface: "#1e1b16", // card / panel background
-        ivory: "#f4eee2", // primary light text on dark
-        stone: "#a79e8e", // muted secondary text
+        ink: "#0b0a08",
+        charcoal: "#16140f",
+        surface: "#1e1b16",
+        ivory: "#f4eee2",
+        stone: "#a79e8e",
         gold: {
           DEFAULT: "#c6a15b",
           light: "#e0c48a",

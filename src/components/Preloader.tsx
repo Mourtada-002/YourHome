@@ -5,12 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { useSiteReady } from "./SiteReadyContext";
 
-/**
- * Entry curtain: a counter ticks 0 → 100 while the wordmark holds centre
- * stage, then two full-height panels split and slide off horizontally
- * (left panel exits left, right panel exits right) to reveal the Hero
- * underneath — the "rideau horizontal" (curtain reveal) effect.
- */
 export default function Preloader() {
   const rootRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -21,12 +15,6 @@ export default function Preloader() {
   const [isMounted, setIsMounted] = useState(true);
   const { markReady } = useSiteReady();
 
-  // Prevent scrolling behind the curtain (belt-and-suspenders alongside
-  // Lenis being stopped — this also blocks native touch scroll on mobile).
-  // Depends on isMounted (rather than running once on mount) because this
-  // component hides itself via `return null` instead of being unmounted by
-  // its parent — a plain `useEffect(..., [])` cleanup would never fire, and
-  // the scroll lock would stay applied forever after the curtain finishes.
   useEffect(() => {
     if (!isMounted) return;
     const original = document.body.style.overflow;
