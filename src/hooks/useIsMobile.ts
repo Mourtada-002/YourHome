@@ -1,29 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const MOBILE_QUERY = "(max-width: 767px)";
+
+function subscribe(callback: () => void) {
+  const mql = window.matchMedia(MOBILE_QUERY);
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+  return window.matchMedia(MOBILE_QUERY).matches;
+}
+
+function getServerSnapshot() {
+  return false;
+}
 
 /**
  * Tracks the project's single breakpoint (768px) so heavy scroll-driven
  * animations (pin, scrub, parallax) can be simplified or skipped on mobile.
  *
- * Always starts `false` (matching the server, which has no viewport to
- * measure) and corrects itself inside an effect after mount. Reading
- * `matchMedia` synchronously in the initial state would give the real value
- * on the client's first render but not the server's, which is a hydration
- * mismatch on every mobile page load.
+ * Uses useSyncExternalStore (not useState + useEffect) so the real value is
+ * available on the client's very first render, with no hydration-mismatch
+ * warning. A useEffect-based version briefly reports `false` (desktop) on
+ * mobile's first client render before correcting itself one tick later —
+ * long enough for GSAP effects gated on `isMobile` (e.g. HorizontalGallery's
+ * pin) to set up their desktop pin/spacer and then tear it down, which can
+ * leave a stray empty pinned block behind.
  */
 export function useIsMobile(): boolean {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia(MOBILE_QUERY);
-    setIsMobile(mql.matches);
-    const listener = (event: MediaQueryListEvent) => setIsMobile(event.matches);
-    mql.addEventListener("change", listener);
-    return () => mql.removeEventListener("change", listener);
-  }, []);
-
-  return isMobile;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
