@@ -39,7 +39,7 @@ export default function Hero() {
         ease: "power3.out",
       });
     },
-    { dependencies: [isReady] }
+    { dependencies: [isReady] },
   );
 
   useGSAP(
@@ -57,7 +57,7 @@ export default function Hero() {
         },
       });
     },
-    { dependencies: [isMobile] }
+    { dependencies: [isMobile] },
   );
 
   return (
