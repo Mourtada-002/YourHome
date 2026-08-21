@@ -31,7 +31,7 @@ export default function Footer() {
             Your<span className="text-gold">Home</span>
           </span>
           <p className="max-w-xs text-stone">
-            L&apos;immobilier de prestige, pensé comme une expérience — de la
+            L&apos;immobilier de prestige, pensé comme une expérience de la
             première visite à la remise des clés.
           </p>
         </div>

@@ -117,6 +117,7 @@ export default function Navbar() {
   );
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!isMobile) setIsMenuOpen(false);
   }, [isMobile]);
 

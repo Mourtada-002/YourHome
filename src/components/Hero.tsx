@@ -99,7 +99,7 @@ export default function Hero() {
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <p ref={subRef} className="max-w-md text-stone">
             YourHome sélectionne et accompagne l&apos;acquisition des biens
-            d&apos;exception — villas, penthouses et demeures de caractère —
+            d&apos;exception, villas, penthouses et demeures de caractère
             avec une exigence de service sur-mesure.
           </p>
           <div ref={ctaRef}>

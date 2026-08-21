@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "YourHome — Immobilier d'exception",
+  title: "YourHome - Immobilier d'exception",
   description:
     "YourHome accompagne l'acquisition et la vente de biens immobiliers de prestige. Visites privées, expertise locale, biens sélectionnés.",
 };
